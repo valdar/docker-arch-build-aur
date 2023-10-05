@@ -20,6 +20,6 @@ jobs:
         run: |
           docker pull archlinux:latest
           docker build . -t quay.io/valdar/arch-build-aur
-          docker login -u=$QUAY_USER -p=$DOCKER_PASS quay.io
+          docker login -u=$QUAY_USER -p=$QUAY_PASS quay.io
           docker push quay.io/valdar/arch-build-aur
       - uses: gautamkrishnar/keepalive-workflow@v1
