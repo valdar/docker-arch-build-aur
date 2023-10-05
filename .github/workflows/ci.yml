@@ -12,13 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build and push container image
         env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+          QUAY_USER: ${{ secrets.QUAY_USER }}
+          QUAY_PASS: ${{ secrets.QUAY_PASS }}
         run: |
           docker pull archlinux:latest
-          docker build . -t $DOCKER_USER/arch-build-aur
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push $DOCKER_USER/arch-build-aur
+          docker build . -t quay.io/valdar/arch-build-aur
+          docker login -u=$QUAY_USER -p=$DOCKER_PASS quay.io
+          docker push quay.io/valdar/arch-build-aur
+      - uses: gautamkrishnar/keepalive-workflow@v1
