@@ -1,6 +1,6 @@
 FROM archlinux:latest
 
-RUN pacman -Syu --noconfirm --needed base base-devel git asp && \
+RUN pacman -Syu --noconfirm --needed base base-devel devtools && \
     useradd -d /home/makepkg makepkg && \
     mkdir -p /home/makepkg/{.config/pacman,.gnupg,out} && \
     echo 'MAKEFLAGS="-j$(nproc)"' >> /home/makepkg/.config/pacman/makepkg.conf && \
