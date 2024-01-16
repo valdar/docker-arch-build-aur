@@ -17,9 +17,13 @@ jobs:
         env:
           QUAY_USER: ${{ secrets.QUAY_USER }}
           QUAY_PASS: ${{ secrets.QUAY_PASS }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
         run: |
           docker pull archlinux:latest
-          docker build . -t quay.io/valdar/arch-build-aur
+          docker build . -t quay.io/valdar/arch-build-aur -t valdar/arch-build-aur
           docker login -u=$QUAY_USER -p=$QUAY_PASS quay.io
           docker push quay.io/valdar/arch-build-aur
+          docker login -u=$DOCKER_USER -p=$DOCKER_PASS
+          docker push valdar/arch-build-aur
       - uses: gautamkrishnar/keepalive-workflow@v1
