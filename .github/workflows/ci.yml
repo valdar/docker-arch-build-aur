@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build and push container image
         env:
           QUAY_USER: ${{ secrets.QUAY_USER }}
@@ -26,4 +26,4 @@ jobs:
           docker push quay.io/valdar/arch-build-aur
           docker login -u=$DOCKER_USER -p=$DOCKER_PASS
           docker push valdar/arch-build-aur
-      - uses: gautamkrishnar/keepalive-workflow@v1
+      - uses: gautamkrishnar/keepalive-workflow@v2
