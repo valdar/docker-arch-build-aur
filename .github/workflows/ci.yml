@@ -1,4 +1,4 @@
-name: CI
+name: Image publishing
 on:
   push:
     branches:
@@ -7,23 +7,29 @@ on:
     - cron: "0 6 * * *"
 
 jobs:
-  ci:
-    name: CI
+  image-publishing:
+    name: Image publishing
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - name: Build and push container image
-        env:
-          QUAY_USER: ${{ secrets.QUAY_USER }}
-          QUAY_PASS: ${{ secrets.QUAY_PASS }}
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      - name: Login to Quay.io
+        uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USER }}
+          password: ${{ secrets.QUAY_PASS }}
+      - name: Build container image and push to Quay.io
         run: |
           docker pull archlinux:latest
           docker build . -t quay.io/valdar/arch-build-aur -t valdar/arch-build-aur
-          docker login -u=$QUAY_USER -p=$QUAY_PASS quay.io
           docker push quay.io/valdar/arch-build-aur
-          docker login -u=$DOCKER_USER -p=$DOCKER_PASS
+      - name: Login to Dockerhub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
+      - name: Push container image to Dockerhub
+        run: |
           docker push valdar/arch-build-aur
       - uses: gautamkrishnar/keepalive-workflow@v2
