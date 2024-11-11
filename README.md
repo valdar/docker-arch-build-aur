@@ -5,8 +5,8 @@
 The following command will download AUR package and build it:
 
 ```
-$ docker pull quay.io/valdr/arch-build-aur
-$ docker run --rm -v $(pwd):/pkg uay.io/valdr/arch-build-aur /bin/bash -c '/build-aur <package>'
+$ docker pull quay.io/valdar/arch-build-aur
+$ docker run --rm -v $(pwd):/pkg uay.io/valdar/arch-build-aur /bin/bash -c '/build-aur <package>'
 ```
 
 ### Build repo packages
@@ -14,8 +14,8 @@ $ docker run --rm -v $(pwd):/pkg uay.io/valdr/arch-build-aur /bin/bash -c '/buil
 The following command will download repo package and build it:
 
 ```
-$ docker pull quay.io/valdr/arch-build-aur
-$ docker run --rm -v $(pwd):/pkg quay.io/valdr/arch-build-aur /bin/bash -c '/build-repo <package>'
+$ docker pull quay.io/valdar/arch-build-aur
+$ docker run --rm -v $(pwd):/pkg quay.io/valdar/arch-build-aur /bin/bash -c '/build-repo <package>'
 ```
 
 ### Build PKGBUILD
