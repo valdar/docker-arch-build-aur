@@ -23,8 +23,8 @@ $ docker run --rm -v $(pwd):/pkg quay.io/valdr/arch-build-aur /bin/bash -c '/bui
 The following command will build local PKGBUILD file (must reside in a folder mounted to /build):
 
 ```
-$ docker pull quay.io/valdr/arch-build-aur
-$ docker run --rm -v $(pwd):/pkg -v $(pwd):/build quay.io/valdr/arch-build-aur /bin/bash -c '/build-pkgbuild'
+$ docker pull quay.io/valdar/arch-build-aur
+$ docker run --rm -v $(pwd):/pkg -v $(pwd):/build quay.io/valdar/arch-build-aur /bin/bash -c '/build-pkgbuild'
 ```
 
 `.SRCINFO` file will be updated/created in /build directory.
