@@ -6,7 +6,7 @@ The following command will download AUR package and build it:
 
 ```
 $ docker pull quay.io/valdar/arch-build-aur
-$ docker run --rm -v $(pwd):/pkg uay.io/valdar/arch-build-aur /bin/bash -c '/build-aur <package>'
+$ docker run --rm -v $(pwd):/pkg quay.io/valdar/arch-build-aur /bin/bash -c '/build-aur <package>'
 ```
 
 ### Build repo packages
