@@ -32,4 +32,4 @@ jobs:
       - name: Push container image to Dockerhub
         run: |
           docker push valdar/arch-build-aur
-      - uses: gautamkrishnar/keepalive-workflow@v2
+      - uses: entepotenz/keep-github-actions-alive-min-dependencies@af047ce81b46ff8bf02a0bbac1eadffc696df6bb
